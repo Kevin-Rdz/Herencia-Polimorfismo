@@ -8,8 +8,13 @@ abstract class Figure{
     private static int figuresCreated;
     private final String name;
 
+    protected Figure(){
+        this.name = "A figure has no name";
+        figuresCreated++;
+    }
     protected Figure(String name){
         this.name = name;
+        figuresCreated++;
     }
     public abstract float getArea();
     public abstract float getPerimeter();
@@ -88,7 +93,6 @@ class Polygon extends Figure{
     private float sideLength;
 
     public Polygon(float apotema, int sidesCount, float sideLength){
-        super("Poligono");
         this.apotema = apotema;
         this.sideLength = sideLength;
         this.sidesCount = sidesCount;
@@ -104,10 +108,12 @@ class Polygon extends Figure{
         return sidesCount * sideLength;
     }
 }
+
+
 public class Main{
     public static void main(String[] args) {
         List<Figure> figureList = new LinkedList<>();
-
+//El constructor es el metodo que siempre se va a usar cuando se crea una figura
         figureList.add(new Polygon(4, 5, 6.3f));
         figureList.add(new Polygon(4.5f, 8, 3.9f));
         figureList.add(new Rectangle(4, 5));
